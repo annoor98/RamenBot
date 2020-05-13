@@ -1,0 +1,14 @@
+{
+  "name": "ramenbot",
+  "version": "1.0.0",
+  "description": "A simple discord bot.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Annoor Rahman",
+  "license": "ISC",
+  "dependencies": {
+    "eris": "^0.13.0"
+  }
+}
