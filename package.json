@@ -4,11 +4,13 @@
   "description": "A simple discord bot.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/RamenBot.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Annoor Rahman",
   "license": "ISC",
   "dependencies": {
-    "eris": "^0.13.0"
+    "eris": "^0.13.0",
+    "node-fetch": "^2.6.0"
   }
 }
