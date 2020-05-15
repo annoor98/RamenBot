@@ -1,11 +1,11 @@
 //We are using eris to manage the bot
 const eris = require('eris');
+const { token } = require('../keys.json');
+const bot = new eris.Client(token);
 
 const weather = require('./Weather.js');
 const jokes = require('./Jokes.js');
-
-//Put bot token here
-const bot = new eris.Client('');
+const memes = require('./Memes.js');
 
 bot.on('ready', () => {
   console.log('Connection Successful!');
@@ -27,15 +27,20 @@ bot.on('messageCreate', async (msg) =>{
 
 });
 
-bot.on('messageCreate', (msg) => {
-    if(msg.content === 'show weather'){
-      weather.getWeather(msg, bot);
-    }
-});
-
-bot.on('messageCreate', (msg) => {
-    if(msg.content === 'show joke'){
-      jokes.getJoke(msg, bot);
+bot.on('messageCreate',(msg) => {
+  switch(msg.content){
+    case 'show weather':
+      weather.getWeather(msg,bot);
+      break;
+    case 'show joke':
+      jokes.getJoke(msg,bot);
+      break;
+    case 'show dankmeme':
+      memes.getMemes(msg,bot, 'dankmemes');
+      break;
+    case 'show meme':
+      memes.getMemes(msg,bot, 'memes');
+      break;
     }
 });
 
