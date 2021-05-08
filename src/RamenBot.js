@@ -1,6 +1,6 @@
 //We are using eris to manage the bot
 const eris = require('eris');
-const { token } = require('../keys.json');
+const { token } = require('../keys/keys.json');
 const bot = new eris.Client(token);
 
 const weather = require('./Weather.js');
