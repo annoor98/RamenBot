@@ -5,7 +5,7 @@ const bot = new eris.Client(token);
 
 const weather = require('./Weather.js');
 const jokes = require('./Jokes.js');
-const memes = require('./Memes.js');
+const reddit = require('./Reddit.js');
 
 bot.on('ready', () => {
   console.log('Connection Successful!');
@@ -28,20 +28,25 @@ bot.on('messageCreate', async (msg) =>{
 });
 
 bot.on('messageCreate',(msg) => {
-  switch(msg.content){
-    case 'show weather':
-      weather.getWeather(msg,bot);
-      break;
-    case 'show joke':
-      jokes.getJoke(msg,bot);
-      break;
-    case 'show dankmeme':
-      memes.getMemes(msg,bot, 'dankmemes');
-      break;
-    case 'show meme':
-      memes.getMemes(msg,bot, 'memes');
-      break;
+  let message = msg.content;
+  let regexword = /^showme\s/;
+  let regexsecond = /.*?\w+.*?(\w+).*/
+  let secondWord = regexsecond.exec(message);
+
+  if(regexword.test(message)){
+    switch(msg.content){
+      case 'showme weather':
+        weather.getWeather(msg,bot);
+        return;
+      case 'showme joke':
+        jokes.getJoke(msg,bot);
+        return;
     }
+
+    reddit.getSubReddit(msg,bot,secondWord[1]);
+    
+  }
+  
 });
 
 bot.on('error', err => {
