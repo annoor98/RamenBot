@@ -2,8 +2,8 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-  //Retrieves a random meme from Reddit.
-  getMemes: function (msg, bot, subreddit){
+  //Retrieves a random post/image from Reddit.
+  getSubReddit: function (msg, bot, subreddit){
 
     fetch('https://www.reddit.com/r/' + subreddit + '/random/.json')
         .then(res => res.json())
@@ -24,7 +24,7 @@ module.exports = {
               }
             });
 
-        }).catch(err => bot.createMessage(msg.channel.id, "Sorry! I couldn't get any memes."));
+        }).catch(err => bot.createMessage(msg.channel.id, "Sorry! I couldn't get anything from Reddit."));
   }
 
 };

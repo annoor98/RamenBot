@@ -1,6 +1,6 @@
 //Put Open Weather Api Key and city key here
-const {weatherKey} = require('../keys.json');
-const {cityId} = require('../keys.json');
+const {weatherKey} = require('../keys/keys.json');
+const {cityId} = require('../keys/keys.json');
 //We are using node-fetch to fetch data from public APIs
 const fetch = require('node-fetch');
 
