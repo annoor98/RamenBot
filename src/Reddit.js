@@ -2,7 +2,7 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-  //Retrieves a random post/image from Reddit.
+  //Retrieves a random post from Reddit.
   getSubReddit: function (msg, bot, subreddit){
 
     fetch('https://www.reddit.com/r/' + subreddit + '/random/.json')
@@ -12,17 +12,7 @@ module.exports = {
           var url = 'https://www.reddit.com' + data[0]['data']['children'][0]['data']['permalink'];
           var imageUrl = data[0]['data']['children'][0]['data']['url'];
 
-          bot.createMessage(msg.channel.id,{
-              "embed": {
-                "title": 	title,
-                "description": 	"r/" + subreddit,
-                "url": url,
-                "color": 16098851,
-                "image": {
-                  "url": imageUrl
-                }
-              }
-            });
+          bot.createMessage(msg.channel.id, imageUrl);
 
         }).catch(err => bot.createMessage(msg.channel.id, "Sorry! I couldn't get anything from Reddit."));
   }
