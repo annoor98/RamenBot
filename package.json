@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "eris": "^0.13.4",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.7"
   }
 }
